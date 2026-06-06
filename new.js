@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#ffffff" />
+<script>try{var t=localStorage.getItem('fifo_theme');document.documentElement.setAttribute('data-theme',(t==='dark'||t==='light')?t:'light');}catch(e){}</script>
+
+<title>FIFOFINDER — Australia's #1 FIFO Career Authority | Land Your First FIFO Job</title>
+<meta name="description" content="Applied for FIFO jobs but nobody's calling back? We help FIFO job seekers find what's holding them back, fix their application strategy, and land FIFO roles — fast. Take the free Readiness Quiz or book a strategy call." />
+<link rel="canonical" href="https://www.fifofinder.com.au/" />
+
+<!-- Open Graph / social -->
+<meta property="og:type" content="website" />
+<meta property="og:title" content="FIFOFINDER — Land Your First FIFO Job, Faster" />
+<meta property="og:description" content="98% of FIFO applications get rejected. We rebuilt the playbook with insider data from 20+ mining recruiters. Take the free FIFO Readiness Quiz." />
+<meta property="og:site_name" content="FIFOFINDER" />
+<meta name="twitter:card" content="summary_large_image" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="new.css" />
+
+<!-- Schema markup -->
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "name":"FIFOFINDER",
+  "description":"FIFO career coaching and application strategy. We help job seekers land Fly-In Fly-Out mining roles across Australia.",
+  "areaServed":"AU",
+  "url":"https://www.fifofinder.com.au/"
+}
+</script>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header class="site-header" id="header">
+  <div class="container header-inner">
+    <a href="#top" class="brand" aria-label="FIFOFINDER home">
+      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M3 14l4-7 5 4 4-6 5 9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+      <span class="brand-name">FIFO<span class="brand-accent">FINDER</span></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#why">Why You're Stuck</a>
+      <a href="#how">How It Works</a>
+      <a href="#quiz">Readiness Quiz</a>
+      <a href="#calc">Salary Calculator</a>
+      <a href="#stories">Success Stories</a>
+      <a href="#resources">Free Resources</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="header-actions">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light / dark theme">
+        <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+      </button>
+      <button class="btn btn-apply btn-header" data-open-form>Book a Call</button>
+      <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- mobile nav -->
+<div class="nav-scrim" id="navScrim"></div>
+<nav class="mobile-nav" id="mobileNav" aria-label="Mobile">
+  <a href="#why">Why You're Stuck</a>
+  <a href="#how">How It Works</a>
+  <a href="#quiz">Readiness Quiz</a>
+  <a href="#calc">Salary Calculator</a>
+  <a href="#stories">Success Stories</a>
+  <a href="#services">Services</a>
+  <a href="#resources">Free Resources</a>
+  <a href="#faq">FAQ</a>
+  <button class="btn btn-apply btn-block" data-open-form>Book a Free Call</button>
+</nav>
+
+<main id="top">
+
+  <!-- ===== HERO ===== -->
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <span class="pill"><span class="dot"></span> Australia's #1 FIFO career authority</span>
+      <h1 class="hero-title">Applied For FIFO Jobs But <span class="hl">Nobody Is Calling Back?</span></h1>
+      <p class="hero-sub">
+        You're not doing it wrong on purpose — most FIFO applicants make the same invisible mistakes.
+        We help you identify what's holding you back, fix your application strategy, and dramatically
+        increase your chances of landing FIFO opportunities.
+      </p>
+      <div class="hero-ctas">
+        <button class="btn btn-apply btn-lg" data-open-form>Book Free Strategy Call</button>
+        <a href="#quiz" class="btn btn-outline btn-lg">Take the Readiness Quiz</a>
+        <button class="btn btn-outline btn-lg" data-resource="FIFO Starter Guide" data-eyebrow="Free guide" data-sub="The exact first steps to break into FIFO — tickets, resume and where to apply.">Get the Free Starter Guide</button>
+      </div>
+      <p class="trust-inline"><span class="stars">★★★★★</span> Trusted by hundreds of FIFO job seekers across Australia</p>
+    </div>
+  </section>
+
+  <!-- ===== TRUST BAR ===== -->
+  <section class="logos">
+    <div class="container">
+      <p class="logos-label">Our members have landed interviews &amp; offers across Australia's resource sector</p>
+      <div class="logos-row" aria-label="Mining companies">
+        <span class="logo-word">BHP</span><span class="logo-word">Rio Tinto</span><span class="logo-word">Fortescue</span>
+        <span class="logo-word">Newmont</span><span class="logo-word">Glencore</span><span class="logo-word">Vale</span>
+        <span class="logo-word">Civeo</span><span class="logo-word">Compass Group</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS ===== -->
+  <section class="stats">
+    <div class="container stats-grid">
+      <div class="stat"><span class="stat-num" data-count="98" data-suffix="%">0%</span><span class="stat-label">of FIFO applications get rejected</span></div>
+      <div class="stat"><span class="stat-num" data-count="6" data-suffix="s">0s</span><span class="stat-label">a recruiter spends on your resume</span></div>
+      <div class="stat"><span class="stat-num" data-count="20" data-suffix="+">0+</span><span class="stat-label">mining recruiters interviewed</span></div>
+      <div class="stat"><span class="stat-num" data-count="12" data-suffix="">0</span><span class="stat-label">different companies decoded</span></div>
+    </div>
+  </section>
+
+  <!-- ===== COMMON PROBLEMS ===== -->
+  <section class="section" id="problems">
+    <div class="container">
+      <div class="narrow center">
+        <span class="kicker">Sound familiar?</span>
+        <h2 class="section-title">If you're thinking any of this, you're in the right place</h2>
+        <p class="lead">These are the exact frustrations we hear every day from people trying to break into FIFO.</p>
+      </div>
+      <div class="problems-grid">
+        <div class="problem"><span class="q">😤</span><p>"I've applied everywhere and hear nothing back."</p></div>
+        <div class="problem"><span class="q">🤔</span><p>"Nobody explains what I'm doing wrong."</p></div>
+        <div class="problem"><span class="q">🎫</span><p>"Do I need more tickets?"</p></div>
+        <div class="problem"><span class="q">📄</span><p>"Is my resume the problem?"</p></div>
+        <div class="problem"><span class="q">📨</span><p>"Am I applying incorrectly?"</p></div>
+        <div class="problem"><span class="q">⛏️</span><p>"Is FIFO even realistic for me?"</p></div>
+        <div class="problem"><span class="q">⚡</span><p>"How do other people get hired so fast?"</p></div>
+        <div class="problem"><span class="q">⏳</span><p>"I'm sick of wasting months trying."</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY MOST FAIL ===== -->
+  <section class="section section-alt" id="why">
+    <div class="container narrow">
+      <span class="kicker">Why most FIFO applicants fail</span>
+      <h2 class="section-title">It's not your effort. It's that you're invisible.</h2>
+      <p class="lead">A mining recruiter spends about 6 seconds on your resume. No one reads your work history — they scan for signals. Miss them and you're filtered out instantly.</p>
+      <div class="vs">
+        <div class="vs-card vs-visible">
+          <span class="vs-tag">VISIBLE</span>
+          <p class="vs-head">The right signals. Recruiter <span class="hl">stops and reads.</span></p>
+          <p class="vs-foot">Not skipped.</p>
+        </div>
+        <div class="vs-card vs-invisible">
+          <span class="vs-tag">INVISIBLE</span>
+          <p class="vs-head">No key signals. Scanned past in seconds.</p>
+          <p class="vs-foot">Not rejected. Invisible.</p>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="signals-grid" style="margin-top:34px">
+        <article class="signal-card"><span class="signal-ico" aria-hidden="true">🛡️</span><h3>Safety awareness</h3><p>The number-one filter. They need to see you'll never be a risk on site.</p></article>
+        <article class="signal-card"><span class="signal-ico" aria-hidden="true">⛏️</span><h3>Site readiness</h3><p>Tickets, medicals and clearances framed so they read as "ready to start now."</p></article>
+        <article class="signal-card"><span class="signal-ico" aria-hidden="true">⏱️</span><h3>Reliability</h3><p>Proof you'll show up, swing after swing, without drama or no-shows.</p></article>
+        <article class="signal-card"><span class="signal-ico" aria-hidden="true">💪</span><h3>Physical resilience</h3><p>Evidence you can handle the hours, the heat and the roster.</p></article>
+        <article class="signal-card"><span class="signal-ico" aria-hidden="true">🎯</span><h3>Role fit</h3><p>Speaking the exact language of the role and the site you're targeting.</p></article>
+        <article class="signal-card signal-card--more"><span class="signal-ico" aria-hidden="true">➕</span><h3>…and the rest</h3><p>Several more criteria recruiters never publish — the ones we mapped for you.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="section" id="how">
+    <div class="container">
+      <div class="narrow center">
+        <span class="kicker">How FIFOFINDER works</span>
+        <h2 class="section-title">Our process is <span class="hl">5 steps</span> — each fixes a specific failure point</h2>
+        <p class="lead">We spoke with 20+ mining recruiters across 12 companies, then turned what they told us into a system you follow step by step.</p>
+      </div>
+      <ol class="steps">
+        <li class="step-item"><span class="step-n">1</span><div><h3>Define the right FIFO target</h3><p>More callbacks from the right roles.</p></div></li>
+        <li class="step-item"><span class="step-n">2</span><div><h3>Build a FIFO-ready resume &amp; cover letter</h3><p>More visibility inside hiring systems.</p></div></li>
+        <li class="step-item"><span class="step-n">3</span><div><h3>Send you the complete FIFO application system</h3><p>All the information to get into FIFO fast.</p></div></li>
+        <li class="step-item"><span class="step-n">4</span><div><h3>Feedback during the application process</h3><p>Clarity on what to adjust to move forward.</p></div></li>
+        <li class="step-item"><span class="step-n">5</span><div><h3>Train you to handle recruiter calls</h3><p>Pass the screening and land the role.</p></div></li>
+      </ol>
+      <p class="steps-result">✅ FIFO job landed</p>
+      <div class="center"><button class="btn btn-apply btn-lg" data-open-form>Book Your Free Strategy Call</button></div>
+    </div>
+  </section>
+
+  <!-- ===== READINESS QUIZ ===== -->
+  <section class="section section-alt" id="quiz">
+    <div class="container">
+      <div class="narrow center">
+        <span class="kicker">Free 60-second assessment</span>
+        <h2 class="section-title">How Ready Are You For FIFO?</h2>
+        <p class="lead">Answer 8 quick questions and get your FIFO Readiness Score (0–100) plus custom recommendations for your situation.</p>
+      </div>
+      <div class="quiz-wrap">
+        <div class="quiz-card">
+          <div class="quiz-progress"><span id="quizBar"></span></div>
+          <div class="quiz-meta"><span id="quizMeta">Question 1 of 8</span><span>FIFO Readiness Quiz</span></div>
+          <div id="quizStage"><!-- rendered by new.js --></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SALARY CALCULATOR ===== -->
+  <section class="section" id="calc">
+    <div class="container">
+      <div class="narrow center">
+        <span class="kicker">What's it worth?</span>
+        <h2 class="section-title">FIFO Salary Calculator</h2>
+        <p class="lead">See what switching to FIFO could mean for your income — this year, and over the next 5.</p>
+      </div>
+      <div class="calc-wrap">
+        <div class="calc-card">
+          <h3>Your details</h3>
+          <div class="field"><label for="cl-occ">Current occupation</label><input id="cl-occ" type="text" placeholder="e.g. Warehouse worker"></div>
+          <div class="field"><label for="cl-income">Current annual income (AUD)</label><input id="cl-income" type="number" inputmode="numeric" min="0" step="1000" placeholder="70000"></div>
+          <div class="field"><label for="cl-role">Desired FIFO role</label><select id="cl-role"></select></div>
+          <div class="field"><label for="cl-state">State</label>
+            <select id="cl-state"><option>WA</option><option>QLD</option><option>NSW</option><option>SA</option><option>NT</option><option>VIC</option><option>TAS</option></select></div>
+          <div class="field"><label for="cl-exp">Experience level</label><select id="cl-exp"></select></div>
+        </div>
+        <div class="calc-card calc-out">
+          <h3>Your FIFO opportunity</h3>
+          <div class="calc-headline" id="cl-headline">+$60,000 / year</div>
+          <p class="calc-sub" id="cl-sub">Switching to FIFO could lift your income significantly.</p>
+          <div class="bars">
+            <div class="bar-row"><div class="bl"><span>Current income</span><b id="cl-cur-val">$70,000</b></div><div class="bar cur"><i id="cl-cur-bar"></i></div></div>
+            <div class="bar-row"><div class="bl"><span>Estimated FIFO income</span><b id="cl-fifo-val">$130,000</b></div><div class="bar fifo"><i id="cl-fifo-bar"></i></div></div>
+          </div>
+          <div class="diffs">
+            <div class="diff"><div class="dv" id="cl-d1">+$60k</div><div class="dl">1 Year</div></div>
+            <div class="diff"><div class="dv" id="cl-d3">+$180k</div><div class="dl">3 Years</div></div>
+            <div class="diff"><div class="dv" id="cl-d5">+$300k</div><div class="dl">5 Years</div></div>
+          </div>
+          <button class="btn btn-apply btn-block" data-open-form data-plan="From Salary Calculator">See The Fastest Path To FIFO</button>
+          <p class="calc-note">Estimates are indicative ranges based on typical FIFO roles and rosters, before tax. Actual pay varies by site, employer and roster.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SUCCESS STORIES ===== -->
+  <section class="section section-alt" id="stories">
+    <div class="container">
+      <div class="narrow center">
+        <span class="kicker">Success stories</span>
+        <h2 class="section-title">From "no callbacks" to on-site — in weeks</h2>
+        <p class="lead">Real transformations from members who were stuck exactly where you are now.</p>
+      </div>
+
+      <div class="case-grid">
+        <article class="case">
+          <div class="case-top"><span class="avatar">K</span><div><h3>Kate</h3><small>Mine site · Kalgoorlie, WA</small></div></div>
+          <dl>
+            <div><dt>Starting situation</dt><dd>Applying for months with no callbacks, unsure if FIFO was even realistic.</dd></div>
+            <div><dt>Mistakes being made</dt><dd>Generic resume, applying everywhere, no recruiter signals.</dd></div>
+            <div><dt>Our strategy</dt><dd>Targeted role + FIFO-ready resume + recruiter-call prep.</dd></div>
+            <div><dt>Result</dt><dd>Offered a role near Kalgoorlie — starting in 10 days.</dd></div>
+          </dl>
+          <div class="timeline">
+            <div class="tl"><div class="m">Month 0</div><div class="d">No interviews</div></div>
+            <div class="tl"><div class="m">Week 1</div><div class="d">Resume rebuilt &amp; role targeted</div></div>
+            <div class="tl"><div class="m">Week 2</div><div class="d">Recruiter call → offer</div></div>
+            <div class="tl"><div class="m">Day 10</div><div class="d">Starting on site 🎉</div></div>
+          </div>
+        </article>
+
+        <article class="case">
+          <div class="case-top"><span class="avatar">V</span><div><h3>Victor</h3><small>Minesite Cleaning · Compass Group</small></div></div>
+          <dl>
+            <div><dt>Starting situation</dt><dd>Wanted into FIFO but applications were going nowhere.</dd></div>
+            <div><dt>Mistakes being made</dt><dd>Resume wasn't clear or structured for a 6-second scan.</dd></div>
+            <div><dt>Our strategy</dt><dd>Rebuilt the application around the signals recruiters look for.</dd></div>
+            <div><dt>Result</dt><dd>Offer for the Cleaning position with Compass Group — "the recruiter even mentioned how clear and structured it was."</dd></div>
+          </dl>
+          <div class="timeline">
+            <div class="tl"><div class="m">Month 0</div><div class="d">No responses</div></div>
+            <div class="tl"><div class="m">Month 1</div><div class="d">Application system rebuilt</div></div>
+            <div class="tl"><div class="m">Month 2</div><div class="d">Interview booked</div></div>
+            <div class="tl"><div class="m">Month 2</div><div class="d">Offer + first swing 🎉</div></div>
+          </div>
+        </article>
+      </div>
+
+      <!-- video testimonials -->
+      <h3 class="testi-subhead" style="margin-top:54px">Hear it from customers who were struggling like you</h3>
+      <script src="https://fast.wistia.com/player.js" async></script>
+      <script src="https://fast.wistia.com/embed/3x69vcuasq.js" async type="module"></script>
+      <script src="https://fast.wistia.com/embed/qv6aozdwjz.js" async type="module"></script>
+      <script src="https://fast.wistia.com/embed/bm0y5mzj1c.js" async type="module"></script>
+      <script src="https://fast.wistia.com/embed/84j2k7ct7j.js" async type="module"></script>
+      <div class="videos-grid">
+        <div class="video-card"><wistia-player media-id="3x69vcuasq" aspect="0.5625"></wistia-player></div>
+        <div class="video-card"><wistia-player media-id="qv6aozdwjz" aspect="0.5625"></wistia-player></div>
+        <div class="video-card"><wistia-player media-id="bm0y5mzj1c" aspect="0.5625"></wistia-player></div>
+        <div class="video-card"><wistia-player media-id="84j2k7ct7j" aspect="0.7114"></wistia-player></div>
+      </div>
+
+      <!-- receipts -->
+      <h3 class="testi-subhead">Receipts, not promises — tap to expand</h3>
+      <div class="receipts-grid">
+        <button type="button" class="receipt" data-zoom data-cap="Civeo — application received for FIFO Minesite Cleaning.">
+          <img src="assets/offer-civeo.jpg" alt="Civeo email confirming a FIFO Minesite Cleaning application" loading="lazy" />
+          <span class="receipt-cap"><strong>Civeo</strong> — FIFO Minesite Cleaning application received.</span></button>
+        <button type="button" class="receipt" data-zoom data-cap="Compass Group — interview booked: Southflank Minesite Utility, 2:1 roster, Perth WA.">
+          <img src="assets/interview-compass.jpg" alt="Compass Group interview for Southflank Minesite Utility" loading="lazy" />
+          <span class="receipt-cap"><strong>Compass Group</strong> — interview: Southflank Minesite Utility, 2:1, Perth WA.</span></button>
+        <button type="button" class="receipt" data-zoom data-cap="Kate — offered a role near Kalgoorlie, starting in 10 days.">
+          <img src="assets/chat-kate.jpg" alt="Kate offered a position near Kalgoorlie starting in 10 days" loading="lazy" />
+          <span class="receipt-cap"><strong>Kate</strong> — offered a role near Kalgoorlie, starting in 10 days.</span></button>
+        <button type="button" class="receipt" data-zoom data-cap="Brian — landed the Utility position in WA.">
+          <img src="assets/chat-brian.jpg" alt="Brian landed the Utility position in WA" loading="lazy" />
+          <span class="receipt-cap"><strong>Brian</strong> — landed the Utility position in WA.</span></button>
+        <button type="button" class="receipt" data-zoom data-cap="Victor — offer for the Cleaning position with Compass Group.">
+          <img src="assets/chat-victor.jpg" alt="Victor received an offer for Cleaning with Compass Group" loading="lazy" />
+          <span class="receipt-cap"><strong>Victor</strong> — offer for Cleaning with Compass Group.</span></button>
+        <button type="button" class="receipt" data-zoom data-cap="The pay that follows — fortnightly deposits of $4,657–$7,975.">
+          <img src="assets/earnings.jpg" alt="Fortnightly FIFO pay deposits ranging from $4,657 to $7,975" loading="lazy" />
+          <span class="receipt-cap"><strong>The pay that follows</strong> — fortnightly $4,657–$7,975.</span></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== SERVICES / PRICING ===== -->
+  <section class="section" id="services">
+    <div class="container">
+      <div class="narrow center">
+        <span class="kicker">Services</span>
+        <h2 class="section-title">Pick the level of support you need</h2>
+        <p class="lead">Packages range from <strong>A$400 to A$1,200</strong>. Not sure which fits? On your free call we'll recommend the right one — or tell you that you don't need us at all.</p>
+      </div>
+      <div class="pricing-grid">
+        <article class="price-card">
+          <span class="price-level">Level 1</span><h3 class="price-name">Application Fix</h3><p class="price-from"><span>A$400</span></p>
+          <p class="price-desc">Best if you're confident in your process and just need it done right.</p>
+          <ul class="price-feats"><li>Recruiter-signal resume rebuild</li><li>Tickets &amp; clearances reframed</li><li>Optimised for the 6-second scan</li></ul>
+          <button class="btn btn-ghost btn-block" data-open-form data-plan="Level 1 — Application Fix (A$400)">Apply for this</button>
+        </article>
+        <article class="price-card price-card--featured">
+          <span class="badge">★ Recommended</span>
+          <span class="price-level">Level 2</span><h3 class="price-name">Full Coaching Program</h3><p class="price-from"><span>A$800</span></p>
+          <p class="price-desc">Best if you want a complete strategy — the full system, end to end.</p>
+          <ul class="price-feats"><li>Everything in Application Fix</li><li>The complete FIFO application system</li><li>1:1 coaching &amp; feedback as you apply</li><li>Recruiter-call training to land the role</li></ul>
+          <button class="btn btn-apply btn-block" data-open-form data-plan="Level 2 — Full Coaching Program (A$800)">Apply for this</button>
+        </article>
+        <article class="price-card">
+          <span class="price-level">Level 3</span><h3 class="price-name">Done-For-You</h3><p class="price-from"><span>A$1,200</span></p>
+          <p class="price-desc">Best if you want us to handle the heavy lifting for you. <em>Limited capacity.</em></p>
+          <ul class="price-feats"><li>Everything in Full Coaching</li><li>We run your applications for you</li><li>Priority, hands-on support</li></ul>
+          <button class="btn btn-ghost btn-block" data-open-form data-plan="Level 3 — Done-For-You (A$1,200)">Apply for this</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FREE RESOURCES ===== -->
+  <section class="section section-alt" id="resources">
+    <div class="container">
+      <div class="narrow center">
+        <span class="kicker">Free resources</span>
+        <h2 class="section-title">Free FIFO guides to get you moving today</h2>
+        <p class="lead">Grab any of these free — we'll email it straight to you.</p>
+      </div>
+      <div class="res-grid">
+        <article class="res-card"><span class="res-ico">🚀</span><h3>FIFO Starter Guide</h3><p>The exact first steps to break into FIFO with no experience.</p><button class="btn btn-apply btn-block" data-resource="FIFO Starter Guide" data-eyebrow="Free guide" data-sub="The exact first steps to break into FIFO — tickets, resume and where to apply.">Get it free</button></article>
+        <article class="res-card"><span class="res-ico">✅</span><h3>FIFO Resume Checklist</h3><p>Make sure your resume passes the 6-second recruiter scan.</p><button class="btn btn-apply btn-block" data-resource="FIFO Resume Checklist" data-eyebrow="Free checklist" data-sub="The line-by-line checklist recruiters wish every applicant used.">Get it free</button></article>
+        <article class="res-card"><span class="res-ico">🎙️</span><h3>FIFO Interview Guide</h3><p>Exactly what recruiters ask — and how to answer.</p><button class="btn btn-apply btn-block" data-resource="FIFO Interview Guide" data-eyebrow="Free guide" data-sub="Walk into your screening call knowing exactly what to say.">Get it free</button></article>
+        <article class="res-card"><span class="res-ico">🗺️</span><h3>FIFO Application Blueprint</h3><p>The step-by-step system for applying the right way.</p><button class="btn btn-apply btn-block" data-resource="FIFO Application Blueprint" data-eyebrow="Free blueprint" data-sub="Stop applying everywhere — follow the blueprint that gets callbacks.">Get it free</button></article>
+        <article class="res-card"><span class="res-ico">🎫</span><h3>FIFO Tickets Guide</h3><p>Which tickets actually matter for your target role.</p><button class="btn btn-apply btn-block" data-resource="FIFO Tickets Guide" data-eyebrow="Free guide" data-sub="Don't waste money on the wrong tickets — get the ones that count.">Get it free</button></article>
+        <article class="res-card"><span class="res-ico">🧭</span><h3>FIFO Career Roadmap</h3><p>Where FIFO can take you over 1, 3 and 5 years.</p><button class="btn btn-apply btn-block" data-resource="FIFO Career Roadmap" data-eyebrow="Free roadmap" data-sub="See the realistic career and income path FIFO can open up.">Get it free</button></article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="narrow center">
+        <span class="kicker">FAQ</span>
+        <h2 class="section-title">Questions, answered</h2>
+      </div>
+      <div class="faq">
+        <div class="faq-item"><button class="faq-q" aria-expanded="false">Can I get a FIFO job with no experience?<span class="chev"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="faq-a"><p>Yes. Plenty of our members start with zero mining experience. The key is framing what you do have around the signals recruiters look for, and targeting the right entry roles.</p></div></div>
+        <div class="faq-item"><button class="faq-q" aria-expanded="false">What does the free strategy call involve?<span class="chev"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="faq-a"><p>It's a strategy call, not a sales call. We'll either point you in the right direction for free, explain how we can help if a package fits, or refer you elsewhere if we're not the right fit. No pressure, no follow-up calls if you say no.</p></div></div>
+        <div class="faq-item"><button class="faq-q" aria-expanded="false">How much do your services cost?<span class="chev"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="faq-a"><p>Packages range from A$400 (Application Fix) to A$1,200 (Done-For-You). On your call we'll recommend the right level for your situation.</p></div></div>
+        <div class="faq-item"><button class="faq-q" aria-expanded="false">Which tickets do I actually need?<span class="chev"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="faq-a"><p>It depends on your target role. Many entry roles need fewer than people think. Grab our free Tickets Guide, or take the Readiness Quiz for a tailored answer.</p></div></div>
+        <div class="faq-item"><button class="faq-q" aria-expanded="false">How quickly could I land a role?<span class="chev"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="faq-a"><p>It varies, but members have gone from no callbacks to an offer in a matter of weeks once their application is fixed and targeted correctly.</p></div></div>
+        <div class="faq-item"><button class="faq-q" aria-expanded="false">Do you guarantee a job?<span class="chev"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button><div class="faq-a"><p>No one ethical can guarantee a job. What we do is dramatically improve your application strategy and the signals recruiters see — which is what actually moves the needle.</p></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOOK A CALL ===== -->
+  <section class="section section-alt" id="book">
+    <div class="container narrow">
+      <div class="center">
+        <span class="kicker">Book a call</span>
+        <h2 class="section-title">Book your free FIFO strategy call</h2>
+        <p class="lead">It's a strategy call, not a sales call — one of three things happens:</p>
+      </div>
+      <div class="outcomes">
+        <div class="outcome"><span class="outcome-n">1</span><div><h3>We point you in the right direction — free</h3><p>If you just need a nudge, we'll tell you exactly what to fix. No charge.</p></div></div>
+        <div class="outcome"><span class="outcome-n">2</span><div><h3>We explain how we can help</h3><p>If a package is the right fit, we'll walk you through it. Your call, no pressure.</p></div></div>
+        <div class="outcome"><span class="outcome-n">3</span><div><h3>We send you elsewhere</h3><p>If we're not the right fit, we'll point you to someone who is.</p></div></div>
+      </div>
+      <p class="reassure">No pitch. No pressure. No follow-up calls if you say no. 🤝</p>
+
+      <div class="center" style="margin-top:26px">
+        <button class="btn btn-apply btn-lg" data-open-form>Start with the qualification form →</button>
+        <p class="hero-cta-note" style="margin-top:10px">Prefer to pick a time now? Use the calendar below.</p>
+      </div>
+
+      <!-- GoHighLevel / LeadConnector calendar -->
+      <div class="booking-embed">
+        <iframe src="https://api.leadconnectorhq.com/widget/booking/LTdHXaroli9bFCIq6skb" title="Book your FIFO strategy call" scrolling="no" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CTA ===== -->
+  <section class="final-cta">
+    <div class="container narrow center">
+      <h2 class="section-title">Your fastest path to FIFO starts with one call 👇</h2>
+      <p class="lead">Take the quiz, grab a guide, or book your free strategy call — whichever feels right.</p>
+      <div class="hero-ctas" style="margin-top:8px">
+        <button class="btn btn-apply btn-lg" data-open-form>Book Free Strategy Call</button>
+        <a href="#quiz" class="btn btn-outline btn-lg">Take the Readiness Quiz</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- ===== FOOTER ===== -->
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <a href="#top" class="brand"><span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M3 14l4-7 5 4 4-6 5 9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><span class="brand-name">FIFO<span class="brand-accent">FINDER</span></span></a>
+    <p class="footer-tag">Australia's FIFO career authority. Helping good people get onto site, faster.</p>
+    <p class="footer-fine">© <span id="year">2026</span> FIFOFINDER. All rights reserved.</p>
+  </div>
+</footer>
+
+<!-- ===== MOBILE STICKY + FLOATING CTA ===== -->
+<div class="mobile-cta"><button class="btn btn-apply btn-block" data-open-form>Book your free call</button></div>
+<button class="btn btn-apply float-book" data-open-form>📞 Book a Call</button>
+
+<!-- ===== APPLY / QUALIFICATION MODAL ===== -->
+<div class="modal" id="applyModal" aria-hidden="true">
+  <div class="modal-backdrop" data-close-form></div>
+  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <button class="modal-close" data-close-form aria-label="Close form"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    <div class="modal-body" id="modalBody">
+      <div class="modal-head">
+        <span class="pill pill-light"><span class="dot"></span> Step <span id="stepNow">1</span> of 3</span>
+        <h2 id="modalTitle">Book your FIFO strategy call</h2>
+        <p class="modal-sub">60 seconds. No payment now — this qualifies you for your free call.</p>
+        <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
+      </div>
+      <form id="applyForm" novalidate>
+        <fieldset class="step is-active" data-step="1">
+          <div class="field"><label for="f-name">Full name <span class="req">*</span></label><input type="text" id="f-name" name="name" autocomplete="name" placeholder="Jane Smith" required /><small class="err" data-err></small></div>
+          <div class="field"><label for="f-email">Email <span class="req">*</span></label><input type="email" id="f-email" name="email" autocomplete="email" placeholder="you@email.com" required /><small class="err" data-err></small></div>
+          <div class="field"><label for="f-phone">Mobile <span class="req">*</span></label><input type="tel" id="f-phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="04xx xxx xxx" required /><small class="err" data-err></small></div>
+          <div class="field"><label for="f-occ">Current occupation</label><input type="text" id="f-occ" name="occupation" placeholder="e.g. Warehouse worker" /></div>
+        </fieldset>
+        <fieldset class="step" data-step="2">
+          <div class="field"><label>Have you worked FIFO before? <span class="req">*</span></label>
+            <div class="choice-row">
+              <label class="choice"><input type="radio" name="experience" value="No experience" required /><span>No experience yet</span></label>
+              <label class="choice"><input type="radio" name="experience" value="Some / related" /><span>Some / related</span></label>
+              <label class="choice"><input type="radio" name="experience" value="Experienced" /><span>Experienced FIFO</span></label>
+            </div><small class="err" data-err></small></div>
+          <div class="field"><label for="f-trying">How long have you been trying?</label>
+            <select id="f-trying" name="trying"><option value="">Select…</option><option>Haven't started</option><option>Under 3 months</option><option>3–6 months</option><option>6–12 months</option><option>Over a year</option></select></div>
+          <div class="field"><label for="f-challenge">Your biggest challenge?</label>
+            <select id="f-challenge" name="challenge"><option value="">Select…</option><option>No callbacks</option><option>No mining tickets</option><option>No FIFO resume</option><option>No experience</option><option>Don't know where to apply</option></select></div>
+        </fieldset>
+        <fieldset class="step" data-step="3">
+          <div class="field"><label for="f-start">How soon do you want to start? <span class="req">*</span></label>
+            <select id="f-start" name="start" required><option value="">Select…</option><option>As soon as possible</option><option>Within 1–3 months</option><option>Within 3–6 months</option><option>Just exploring</option></select><small class="err" data-err></small></div>
+          <div class="field"><label for="f-plan">What are you most interested in? <span class="req">*</span></label>
+            <select id="f-plan" name="plan" required><option value="">Select…</option><option>Level 1 — Application Fix (A$400)</option><option>Level 2 — Full Coaching Program (A$800)</option><option>Level 3 — Done-For-You (A$1,200)</option><option>Not sure yet — help me decide</option></select><small class="err" data-err></small></div>
+          <label class="consent"><input type="checkbox" name="consent" required /><span>I'm committed to getting into FIFO and happy for FIFOFINDER to contact me about my strategy call. <span class="req">*</span></span></label>
+          <small class="err" data-err data-err-consent></small>
+        </fieldset>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-ghost" id="prevBtn" hidden>Back</button>
+          <button type="button" class="btn btn-apply" id="nextBtn">Continue</button>
+          <button type="submit" class="btn btn-apply" id="submitBtn" hidden>Submit &amp; book my call</button>
+        </div>
+      </form>
+    </div>
+    <div class="modal-success" id="modalSuccess" hidden>
+      <div class="success-tick" aria-hidden="true"><svg viewBox="0 0 52 52" width="64" height="64"><circle cx="26" cy="26" r="24" fill="none" stroke="currentColor" stroke-width="3"/><path d="M16 27l7 7 14-15" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h2>You're in. 🎉</h2>
+      <p>Thanks, <span id="successName">mate</span>. We've got your details — now pick a time on the calendar to lock in your free FIFO strategy call.</p>
+      <p class="success-fine">No pitch. No pressure. Keep an eye on your inbox.</p>
+      <a href="#book" class="btn btn-apply" data-close-form>Pick a call time →</a>
+    </div>
+  </div>
+</div>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <div class="lightbox-backdrop" data-close-lightbox></div>
+  <button class="lightbox-close" data-close-lightbox aria-label="Close image"><svg viewBox="0 0 24 24" width="26" height="26" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+  <button class="lightbox-nav lightbox-prev" data-lb-prev aria-label="Previous image"><svg viewBox="0 0 24 24" width="28" height="28" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <button class="lightbox-nav lightbox-next" data-lb-next aria-label="Next image"><svg viewBox="0 0 24 24" width="28" height="28" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <figure class="lightbox-stage" role="dialog" aria-modal="true" aria-label="Proof image"><img id="lightboxImg" src="" alt="" /><figcaption id="lightboxCap"></figcaption></figure>
+</div>
+
+<!-- ===== LEAD POPUP (resources + exit intent) ===== -->
+<div class="popup" id="leadPopup" aria-hidden="true">
+  <div class="popup-backdrop" data-close-popup></div>
+  <div class="popup-card" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+    <button class="modal-close" data-close-popup aria-label="Close"><svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+    <div id="popupFormWrap">
+      <span class="popup-eyebrow" id="popupEyebrow">Free download</span>
+      <h2 id="popupTitle">Get your free guide</h2>
+      <p id="popupSub">Enter your details and we'll send it straight to your inbox.</p>
+      <form id="popupForm" novalidate>
+        <div class="field"><label for="pp-name">Full name <span class="req">*</span></label><input id="pp-name" name="name" type="text" placeholder="Jane Smith" required /><small class="err" data-err></small></div>
+        <div class="field"><label for="pp-email">Email <span class="req">*</span></label><input id="pp-email" name="email" type="email" placeholder="you@email.com" required /><small class="err" data-err></small></div>
+        <div class="field"><label for="pp-phone">Mobile <span class="req">*</span></label><input id="pp-phone" name="phone" type="tel" inputmode="tel" placeholder="04xx xxx xxx" required /><small class="err" data-err></small></div>
+        <button type="submit" class="btn btn-apply btn-block">Send it to me →</button>
+      </form>
+    </div>
+    <div id="popupSuccess" hidden>
+      <div class="success-tick" style="color:var(--green);display:grid;place-items:center;margin-bottom:14px"><svg viewBox="0 0 52 52" width="56" height="56"><circle cx="26" cy="26" r="24" fill="none" stroke="currentColor" stroke-width="3"/><path d="M16 27l7 7 14-15" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+      <h2>On its way! 📩</h2>
+      <p style="color:var(--muted)">Check your inbox in the next few minutes. While you wait, why not book your free strategy call?</p>
+      <button class="btn btn-apply btn-block" data-open-form data-close-popup>Book my free call</button>
+    </div>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script src="new.js"></script>
+<script src="https://link.msgsndr.com/js/form_embed.js" async></script>
+</body>
+</html>
