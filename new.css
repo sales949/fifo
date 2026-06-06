@@ -1,526 +1,223 @@
-<!DOCTYPE html>
-<html lang="en" data-theme="light">
-<head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-<meta name="theme-color" content="#ffffff" />
-<script>try{var t=localStorage.getItem('fifo_theme');document.documentElement.setAttribute('data-theme',(t==='dark'||t==='light')?t:'light');}catch(e){}</script>
-<title>FIFOFINDER — Your fastest path to a FIFO job</title>
-<meta name="description" content="98% of FIFO applications get rejected. We rebuilt the playbook with insider data from 20+ mining recruiters across 12 companies. Real offers at Civeo, Compass Group & more. Apply now." />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="styles.css" />
-</head>
-<body>
+/* ===========================================================
+   FIFOFINDER — funnel page add-ons (loads after styles.css)
+   Inherits all theme tokens from styles.css (light + dark)
+   =========================================================== */
 
-<!-- ===== HEADER ===== -->
-<header class="site-header" id="header">
-  <div class="container header-inner">
-    <a href="#top" class="brand" aria-label="FIFOFINDER home">
-      <span class="brand-mark" aria-hidden="true">
-        <svg viewBox="0 0 24 24" width="20" height="20" fill="none"><path d="M3 14l4-7 5 4 4-6 5 9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </span>
-      <span class="brand-name">FIFO<span class="brand-accent">FINDER</span></span>
-    </a>
-    <div class="header-actions">
-      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Toggle light / dark theme">
-        <svg class="icon-moon" viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <svg class="icon-sun" viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="4.2" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M2 12h2M20 12h2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M19.1 4.9l-1.4 1.4M6.3 17.7l-1.4 1.4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-      </button>
-      <button class="btn btn-apply btn-header" data-open-form>Apply now</button>
-    </div>
-  </div>
-</header>
+/* anchor offset under sticky header */
+.section,.hero,[id]{scroll-margin-top:74px}
 
-<main id="top">
+/* ---------- primary nav ---------- */
+.nav{display:none}
+.nav a{font-size:.95rem;font-weight:600;color:var(--muted);transition:color .2s;white-space:nowrap}
+.nav a:hover{color:var(--text)}
+.nav-toggle{
+  display:grid;place-items:center;width:42px;height:42px;border-radius:11px;
+  background:var(--card);border:1px solid var(--line-2);color:var(--text);
+}
+.nav-toggle:active{transform:scale(.95)}
+.mobile-nav{
+  position:fixed;inset:0 0 0 auto;z-index:90;width:min(82vw,330px);
+  background:var(--bg-3);border-left:1px solid var(--line);
+  transform:translateX(100%);transition:transform .32s var(--ease);
+  display:flex;flex-direction:column;gap:4px;padding:84px 22px 28px;overflow-y:auto;
+}
+.mobile-nav.open{transform:translateX(0);box-shadow:var(--shadow)}
+.mobile-nav a{
+  padding:14px 14px;border-radius:12px;font-weight:600;color:var(--text);
+  border:1px solid transparent;transition:.18s;
+}
+.mobile-nav a:hover{background:var(--card);border-color:var(--line)}
+.mobile-nav .btn{margin-top:14px}
+.nav-scrim{position:fixed;inset:0;z-index:80;background:rgba(4,6,10,.5);backdrop-filter:blur(2px);
+  opacity:0;visibility:hidden;transition:.3s}
+.nav-scrim.open{opacity:1;visibility:visible}
 
-  <!-- ===== HERO ===== -->
-  <section class="hero">
-    <div class="hero-glow" aria-hidden="true"></div>
-    <div class="container hero-inner">
-      <span class="pill"><span class="dot"></span> Application reviewed &nbsp;·&nbsp; You qualified</span>
-      <h1 class="hero-title">Your <span class="hl">fastest path</span> to a FIFO job starts here.</h1>
-      <p class="hero-sub">
-        You've built the resume. Done the tickets. Sent the applications — and heard nothing back.
-        It's not you. It's the playbook. We rebuilt it with insider data from real mining recruiters,
-        and our members are landing offers at <strong>Civeo</strong>, <strong>Compass Group</strong> and more.
-      </p>
-      <div class="hero-cta">
-        <button class="btn btn-apply btn-lg" data-open-form>
-          Apply now
-          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        </button>
-        <p class="hero-cta-note">No pitch. No pressure. Takes 60 seconds.</p>
-      </div>
-    </div>
-  </section>
+/* ---------- hero CTA group (3 buttons) ---------- */
+.hero-ctas{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+.btn-outline{background:transparent;color:var(--text);border:1.5px solid var(--line-2)}
+.btn-outline:hover{border-color:var(--amber);color:var(--amber)}
+.trust-inline{display:flex;align-items:center;gap:8px;justify-content:center;color:var(--muted);font-size:.88rem;margin-top:18px;flex-wrap:wrap}
+.trust-inline .stars{color:var(--amber);letter-spacing:1px}
 
-  <!-- ===== LOGO STRIP ===== -->
-  <section class="logos">
-    <div class="container">
-      <p class="logos-label">The FIFO roles we help you land sit across Australia's biggest resource companies</p>
-      <div class="logos-row" aria-label="Major mining companies">
-        <span class="logo-word">BHP</span>
-        <span class="logo-word">Rio Tinto</span>
-        <span class="logo-word">Fortescue</span>
-        <span class="logo-word">Newmont</span>
-        <span class="logo-word">Glencore</span>
-        <span class="logo-word">Vale</span>
-        <span class="logo-word">Civeo</span>
-        <span class="logo-word">Compass Group</span>
-      </div>
-    </div>
-  </section>
+/* ---------- common problems ---------- */
+.problems-grid{display:grid;grid-template-columns:1fr;gap:12px;margin-top:38px}
+.problem{
+  display:flex;gap:13px;align-items:flex-start;background:var(--card);
+  border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;
+}
+.problem .q{flex:0 0 auto;font-size:1.2rem;line-height:1.4}
+.problem p{font-size:1.02rem;font-style:italic;color:var(--text)}
 
-  <!-- ===== STATS ===== -->
-  <section class="stats">
-    <div class="container stats-grid">
-      <div class="stat"><span class="stat-num" data-count="98" data-suffix="%">0%</span><span class="stat-label">of FIFO applications get rejected</span></div>
-      <div class="stat"><span class="stat-num" data-count="6" data-suffix="s">0s</span><span class="stat-label">a recruiter spends on your resume</span></div>
-      <div class="stat"><span class="stat-num" data-count="20" data-suffix="+">0+</span><span class="stat-label">mining recruiters interviewed</span></div>
-      <div class="stat"><span class="stat-num" data-count="12" data-suffix="">0</span><span class="stat-label">different companies decoded</span></div>
-    </div>
-  </section>
+/* ===========================================================
+   FIFO READINESS QUIZ
+   =========================================================== */
+.quiz-wrap{max-width:680px;margin:38px auto 0}
+.quiz-card{
+  background:var(--card);border:1px solid var(--line-2);border-radius:var(--radius-lg);
+  padding:28px 24px;box-shadow:var(--shadow);position:relative;overflow:hidden;
+}
+.quiz-progress{height:8px;background:var(--field);border-radius:999px;overflow:hidden;margin-bottom:8px}
+.quiz-progress span{display:block;height:100%;width:0;border-radius:999px;
+  background:linear-gradient(90deg,var(--amber),var(--amber-2));transition:width .35s var(--ease)}
+.quiz-meta{display:flex;justify-content:space-between;font-size:.82rem;color:var(--muted);margin-bottom:22px}
+.quiz-q{animation:stepIn .3s var(--ease)}
+.quiz-q h3{font-family:'Sora',sans-serif;font-size:1.3rem;line-height:1.25;margin-bottom:20px}
+.quiz-opts{display:grid;gap:11px}
+.quiz-opt{
+  text-align:left;font-family:inherit;font-size:1rem;color:var(--text);cursor:pointer;
+  background:var(--field);border:1.5px solid var(--line);border-radius:var(--radius-sm);
+  padding:15px 17px;transition:.16s;display:flex;align-items:center;gap:12px;
+}
+.quiz-opt:hover{border-color:var(--amber);transform:translateX(3px)}
+.quiz-opt.sel{border-color:var(--amber);background:var(--amber-soft);color:var(--amber);font-weight:600}
+.quiz-opt .dotmark{flex:0 0 20px;height:20px;border-radius:50%;border:2px solid var(--line-2);transition:.16s}
+.quiz-opt.sel .dotmark{border-color:var(--amber);background:var(--amber);box-shadow:inset 0 0 0 3px var(--card)}
+.quiz-actions{display:flex;justify-content:space-between;margin-top:24px;gap:12px}
+.quiz-back{background:transparent;border:none;color:var(--muted);font-weight:600;font-family:inherit;font-size:.95rem}
+.quiz-back:hover{color:var(--text)}
+.quiz-back[hidden]{display:none}
 
-  <!-- ===== PROBLEM ===== -->
-  <section class="section" id="problem">
-    <div class="container narrow">
-      <span class="kicker">The real problem</span>
-      <h2 class="section-title">What's actually keeping you out of FIFO?</h2>
-      <p class="lead">
-        You did everything right. Built the resume. Got the certifications. Fired off application after
-        application — and got met with silence. Here's the part no one tells you:
-      </p>
-      <div class="callout">
-        <strong>A mining recruiter spends about 6 seconds on your resume.</strong>
-        No one reads your work history. They scan for signals — and if they don't see them instantly,
-        <span class="hl-text">you're invisible.</span>
-      </div>
+/* quiz lead capture + result */
+.quiz-gate,.quiz-result{animation:stepIn .35s var(--ease)}
+.quiz-gate h3,.quiz-result h3{font-family:'Sora',sans-serif;font-size:1.4rem;margin-bottom:8px}
+.quiz-gate p{color:var(--muted);margin-bottom:20px}
+.score-ring{
+  --val:0; width:160px;height:160px;border-radius:50%;margin:6px auto 18px;display:grid;place-items:center;
+  background:conic-gradient(var(--amber) calc(var(--val)*1%), var(--field) 0);
+  transition:--val 1s var(--ease);
+}
+@property --val{syntax:'<number>';inherits:false;initial-value:0}
+.score-ring .inner{
+  width:124px;height:124px;border-radius:50%;background:var(--card);display:grid;place-items:center;text-align:center;
+}
+.score-ring .num{font-family:'Sora',sans-serif;font-weight:800;font-size:2.6rem;line-height:1;color:var(--text)}
+.score-ring .of{font-size:.8rem;color:var(--muted)}
+.score-cat{text-align:center;font-family:'Sora',sans-serif;font-weight:700;font-size:1.3rem;margin-bottom:6px}
+.score-cat.c1{color:#ef4444}.score-cat.c2{color:#f59e0b}.score-cat.c3{color:#3b82f6}.score-cat.c4{color:var(--green)}
+.reco{background:var(--field);border:1px solid var(--line);border-radius:var(--radius);padding:18px 20px;margin:18px 0}
+.reco h4{font-family:'Sora',sans-serif;font-size:1rem;margin-bottom:10px}
+.reco ul{list-style:none;display:grid;gap:9px}
+.reco li{position:relative;padding-left:26px;color:var(--muted);font-size:.96rem}
+.reco li::before{content:"→";position:absolute;left:0;color:var(--amber);font-weight:800}
 
-      <!-- visible vs invisible -->
-      <div class="vs">
-        <div class="vs-card vs-visible">
-          <span class="vs-tag">VISIBLE</span>
-          <p class="vs-head">The right signals. Recruiter <span class="hl">stops and reads.</span></p>
-          <p class="vs-foot">Not skipped.</p>
-        </div>
-        <div class="vs-card vs-invisible">
-          <span class="vs-tag">INVISIBLE</span>
-          <p class="vs-head">No key signals. Scanned past in seconds.</p>
-          <p class="vs-foot">Not rejected. Invisible.</p>
-        </div>
-      </div>
-    </div>
-  </section>
+/* ===========================================================
+   SALARY CALCULATOR
+   =========================================================== */
+.calc-wrap{display:grid;grid-template-columns:1fr;gap:22px;margin-top:38px}
+.calc-card{background:var(--card);border:1px solid var(--line-2);border-radius:var(--radius-lg);padding:26px 22px;box-shadow:var(--shadow)}
+.calc-card h3{font-family:'Sora',sans-serif;font-size:1.15rem;margin-bottom:18px}
+.calc-out h3{margin-bottom:6px}
+.calc-headline{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(1.8rem,7vw,2.6rem);line-height:1.05;margin:6px 0 2px;
+  background:linear-gradient(135deg,var(--amber),var(--amber-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.calc-sub{color:var(--muted);margin-bottom:20px}
+.bars{display:grid;gap:16px;margin-bottom:22px}
+.bar-row{display:grid;gap:6px}
+.bar-row .bl{display:flex;justify-content:space-between;font-size:.9rem;color:var(--muted)}
+.bar-row .bl b{color:var(--text)}
+.bar{height:14px;border-radius:999px;background:var(--field);overflow:hidden}
+.bar i{display:block;height:100%;border-radius:999px;width:0;transition:width .8s var(--ease)}
+.bar.cur i{background:var(--muted-2)}
+.bar.fifo i{background:linear-gradient(90deg,var(--amber),var(--amber-2))}
+.diffs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px}
+.diff{background:var(--field);border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px 10px;text-align:center}
+.diff .dv{font-family:'Sora',sans-serif;font-weight:800;font-size:1.2rem;color:var(--green)}
+.diff .dl{font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-top:3px}
+.calc-note{font-size:.8rem;color:var(--muted-2);margin-top:8px}
 
-  <!-- ===== SIGNALS ===== -->
-  <section class="section section-alt" id="signals">
-    <div class="container">
-      <div class="narrow center">
-        <span class="kicker">What they're really scanning for</span>
-        <h2 class="section-title">The signals that get you shortlisted</h2>
-        <p class="lead">We spoke with <strong>20+ mining recruiters across 12 different companies</strong>. These are the things they filter on in those 6 seconds. Miss them, and the best resume in the world never gets read.</p>
-      </div>
-      <div class="signals-grid">
-        <article class="signal-card">
-          <span class="signal-ico" aria-hidden="true">🛡️</span>
-          <h3>Safety awareness</h3>
-          <p>The number-one filter. They need to see you'll never be a risk on site.</p>
-        </article>
-        <article class="signal-card">
-          <span class="signal-ico" aria-hidden="true">⛏️</span>
-          <h3>Site readiness</h3>
-          <p>Tickets, medicals and clearances framed so they read as "ready to start now."</p>
-        </article>
-        <article class="signal-card">
-          <span class="signal-ico" aria-hidden="true">⏱️</span>
-          <h3>Reliability</h3>
-          <p>Proof you'll show up, swing after swing, without drama or no-shows.</p>
-        </article>
-        <article class="signal-card">
-          <span class="signal-ico" aria-hidden="true">💪</span>
-          <h3>Physical resilience</h3>
-          <p>Evidence you can handle the hours, the heat and the roster.</p>
-        </article>
-        <article class="signal-card">
-          <span class="signal-ico" aria-hidden="true">🎯</span>
-          <h3>Role fit</h3>
-          <p>Speaking the exact language of the role and the site you're targeting.</p>
-        </article>
-        <article class="signal-card signal-card--more">
-          <span class="signal-ico" aria-hidden="true">➕</span>
-          <h3>…and the rest</h3>
-          <p>Several more criteria recruiters never publish — the ones we mapped for you.</p>
-        </article>
-      </div>
-    </div>
-  </section>
+/* ===========================================================
+   SUCCESS STORIES + TIMELINE
+   =========================================================== */
+.case-grid{display:grid;grid-template-columns:1fr;gap:22px;margin-top:38px}
+.case{background:var(--card);border:1px solid var(--line);border-radius:var(--radius-lg);padding:26px 22px}
+.case-top{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.case-top .avatar{width:48px;height:48px;font-size:1rem}
+.case-top h3{font-family:'Sora',sans-serif;font-size:1.15rem}
+.case-top small{color:var(--muted)}
+.case dl{display:grid;gap:12px;margin-bottom:20px}
+.case dt{font-size:.74rem;text-transform:uppercase;letter-spacing:.06em;color:var(--amber);font-weight:800;margin-bottom:2px}
+.case dd{color:var(--muted);font-size:.96rem}
+.timeline{display:grid;gap:0;border-left:2px solid var(--line-2);padding-left:18px}
+.tl{position:relative;padding:0 0 16px}
+.tl:last-child{padding-bottom:0}
+.tl::before{content:"";position:absolute;left:-25px;top:3px;width:12px;height:12px;border-radius:50%;
+  background:var(--amber);box-shadow:0 0 0 4px var(--amber-soft)}
+.tl .m{font-family:'Sora',sans-serif;font-weight:700;font-size:.92rem}
+.tl .d{color:var(--muted);font-size:.9rem}
+.tl:last-child::before{background:var(--green);box-shadow:0 0 0 4px rgba(21,163,74,.2)}
 
-  <!-- ===== PROCESS ===== -->
-  <section class="section" id="process">
-    <div class="container">
-      <div class="narrow center">
-        <span class="kicker">How we fixed it</span>
-        <h2 class="section-title">Our process is <span class="hl">5 steps</span> — each one fixes a specific failure point.</h2>
-        <p class="lead">We stopped guessing and went to the source. Then we turned what recruiters told us into a system you follow step by step.</p>
-      </div>
-      <ol class="steps">
-        <li class="step-item">
-          <span class="step-n">1</span>
-          <div><h3>Define the right FIFO target</h3><p>More callbacks from the right roles.</p></div>
-        </li>
-        <li class="step-item">
-          <span class="step-n">2</span>
-          <div><h3>Build a FIFO-ready resume &amp; cover letter</h3><p>More visibility inside hiring systems.</p></div>
-        </li>
-        <li class="step-item">
-          <span class="step-n">3</span>
-          <div><h3>Send you the complete FIFO application system</h3><p>All the information to get into FIFO fast.</p></div>
-        </li>
-        <li class="step-item">
-          <span class="step-n">4</span>
-          <div><h3>Feedback during the application process</h3><p>Clarity on what to adjust to move forward.</p></div>
-        </li>
-        <li class="step-item">
-          <span class="step-n">5</span>
-          <div><h3>Train you to handle recruiter calls</h3><p>Pass the screening and land the role.</p></div>
-        </li>
-      </ol>
-      <p class="steps-result">✅ FIFO job landed</p>
-      <div class="center"><button class="btn btn-apply btn-lg" data-open-form>Start my FIFO path</button></div>
-    </div>
-  </section>
+/* ===========================================================
+   FREE RESOURCES
+   =========================================================== */
+.res-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:38px}
+.res-card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px 22px;
+  display:flex;flex-direction:column;transition:transform .2s var(--ease),border-color .2s;
+}
+.res-card:hover{transform:translateY(-4px);border-color:var(--line-2)}
+.res-ico{width:48px;height:48px;border-radius:13px;display:grid;place-items:center;font-size:1.5rem;
+  background:var(--amber-soft);margin-bottom:14px}
+.res-card h3{font-family:'Sora',sans-serif;font-size:1.08rem;margin-bottom:6px}
+.res-card p{color:var(--muted);font-size:.94rem;flex:1;margin-bottom:16px}
 
-  <!-- ===== RECEIPTS / REAL PROOF ===== -->
-  <section class="section section-alt" id="receipts">
-    <div class="container">
-      <div class="narrow center">
-        <span class="kicker">Receipts, not promises</span>
-        <h2 class="section-title">Real offers. Real pay. Real members.</h2>
-        <p class="lead">Screenshots straight from people who were stuck like you — interviews, job offers, and the pay that followed.</p>
-      </div>
-      <div class="receipts-grid">
-        <button type="button" class="receipt" data-zoom data-cap="Civeo — application received for FIFO Minesite Cleaning.">
-          <img src="assets/offer-civeo.jpg" alt="Email from Civeo confirming a FIFO Minesite Cleaning job application was received" loading="lazy" />
-          <span class="receipt-cap"><strong>Civeo</strong> — application received for FIFO Minesite Cleaning.</span>
-        </button>
-        <button type="button" class="receipt" data-zoom data-cap="Compass Group — interview booked: Southflank Minesite Utility, 2:1 roster, Perth WA.">
-          <img src="assets/interview-compass.jpg" alt="Compass Group interview scheduled for Southflank Minesite Utility, 2:1 roster, Perth WA" loading="lazy" />
-          <span class="receipt-cap"><strong>Compass Group</strong> — interview booked: Southflank Minesite Utility, 2:1 roster, Perth WA.</span>
-        </button>
-        <button type="button" class="receipt" data-zoom data-cap="Victor — offer for the Cleaning position with Compass Group.">
-          <img src="assets/chat-victor.jpg" alt="WhatsApp message from Victor saying he received an offer for the Cleaning position with Compass Group" loading="lazy" />
-          <span class="receipt-cap"><strong>Victor</strong> — offer for the Cleaning position with Compass Group.</span>
-        </button>
-        <button type="button" class="receipt" data-zoom data-cap="Kate — offered a role near Kalgoorlie, starting in 10 days.">
-          <img src="assets/chat-kate.jpg" alt="WhatsApp message from Kate saying she was offered a position at the mine site near Kalgoorlie, starting in 10 days" loading="lazy" />
-          <span class="receipt-cap"><strong>Kate</strong> — offered a role near Kalgoorlie, starting in 10 days.</span>
-        </button>
-        <button type="button" class="receipt" data-zoom data-cap="Brian — landed the Utility position in WA.">
-          <img src="assets/chat-brian.jpg" alt="WhatsApp message from Brian saying he got the job for the Utility position in WA" loading="lazy" />
-          <span class="receipt-cap"><strong>Brian</strong> — landed the Utility position in WA.</span>
-        </button>
-        <button type="button" class="receipt" data-zoom data-cap="The pay that follows — fortnightly deposits of $4,657–$7,975.">
-          <img src="assets/earnings.jpg" alt="List of fortnightly FIFO pay deposits in 2025 ranging from $4,657 to $7,975" loading="lazy" />
-          <span class="receipt-cap"><strong>The pay that follows</strong> — fortnightly deposits of $4,657–$7,975.</span>
-        </button>
-      </div>
-    </div>
-  </section>
+/* ===========================================================
+   FAQ ACCORDION
+   =========================================================== */
+.faq{max-width:760px;margin:38px auto 0;display:grid;gap:12px}
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+.faq-q{
+  width:100%;text-align:left;font-family:inherit;font-size:1.02rem;font-weight:600;color:var(--text);
+  background:none;border:none;padding:18px 20px;display:flex;justify-content:space-between;align-items:center;gap:14px;cursor:pointer;
+}
+.faq-q .chev{flex:0 0 auto;transition:transform .25s var(--ease);color:var(--amber)}
+.faq-item.open .chev{transform:rotate(180deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s var(--ease)}
+.faq-a p{padding:0 20px 18px;color:var(--muted);font-size:.96rem}
 
-  <!-- ===== TESTIMONIALS ===== -->
-  <section class="section" id="proof">
-    <div class="container">
-      <div class="narrow center">
-        <span class="kicker">In their words</span>
-        <h2 class="section-title">Hear it from customers who were struggling like you</h2>
-        <p class="lead">Real video reviews from members who landed FIFO roles after working with us.</p>
-      </div>
+/* ===========================================================
+   BOOKING EMBED
+   =========================================================== */
+.booking-embed{
+  margin-top:30px;background:var(--card);border:1px solid var(--line-2);border-radius:var(--radius-lg);
+  overflow:hidden;box-shadow:var(--shadow);min-height:680px;
+}
+.booking-embed iframe{width:100%;min-height:680px;border:none;display:block;background:#fff}
 
-      <!-- video testimonials (Wistia) -->
-      <script src="https://fast.wistia.com/player.js" async></script>
-      <script src="https://fast.wistia.com/embed/3x69vcuasq.js" async type="module"></script>
-      <script src="https://fast.wistia.com/embed/qv6aozdwjz.js" async type="module"></script>
-      <script src="https://fast.wistia.com/embed/bm0y5mzj1c.js" async type="module"></script>
-      <script src="https://fast.wistia.com/embed/84j2k7ct7j.js" async type="module"></script>
-      <div class="videos-grid">
-        <div class="video-card"><wistia-player media-id="3x69vcuasq" aspect="0.5625"></wistia-player></div>
-        <div class="video-card"><wistia-player media-id="qv6aozdwjz" aspect="0.5625"></wistia-player></div>
-        <div class="video-card"><wistia-player media-id="bm0y5mzj1c" aspect="0.5625"></wistia-player></div>
-        <div class="video-card"><wistia-player media-id="84j2k7ct7j" aspect="0.7114"></wistia-player></div>
-      </div>
+/* ---------- floating book button (desktop) ---------- */
+.float-book{
+  position:fixed;right:20px;bottom:20px;z-index:45;display:none;
+  box-shadow:var(--shadow-amber);
+}
+@media (min-width:600px){.float-book{display:inline-flex}}
 
-      <h3 class="testi-subhead">More wins from the inbox</h3>
-      <div class="testi-grid">
-        <figure class="testi">
-          <div class="stars" aria-label="5 out of 5">★★★★★</div>
-          <blockquote>“I received an offer for the Cleaning position with Compass Group. The resume you prepared definitely helped — the recruiter even mentioned how clear and structured it was. I'll keep you updated once I start my first swing.”</blockquote>
-          <figcaption><span class="avatar">V</span> <span><strong>Victor</strong><br><small>Minesite Cleaning · Compass Group</small></span></figcaption>
-        </figure>
-        <figure class="testi">
-          <div class="stars" aria-label="5 out of 5">★★★★★</div>
-          <blockquote>“They offered me the position at the mine site near Kalgoorlie! Starting in 10 days!! I'm honestly still shaking — didn't expect it to happen this fast. I'll recommend your services to my friends too.”</blockquote>
-          <figcaption><span class="avatar">K</span> <span><strong>Kate</strong><br><small>Mine site · Kalgoorlie, WA</small></span></figcaption>
-        </figure>
-        <figure class="testi">
-          <div class="stars" aria-label="5 out of 5">★★★★★</div>
-          <blockquote>“Just got an email this morning — I got the job! I was starting to lose hope, then boom, offer in my inbox. The recruiter even said my resume looked ‘super clean and straight to the point.’ That's thanks to you guys.”</blockquote>
-          <figcaption><span class="avatar">B</span> <span><strong>Brian</strong><br><small>Utility position · WA</small></span></figcaption>
-        </figure>
-      </div>
-    </div>
-  </section>
+/* ===========================================================
+   GENERIC POPUP (resources + exit intent)
+   =========================================================== */
+.popup{position:fixed;inset:0;z-index:130;display:none}
+.popup.open{display:block}
+.popup-backdrop{position:absolute;inset:0;background:rgba(4,6,10,.7);backdrop-filter:blur(4px);animation:fade .2s ease}
+.popup-card{
+  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+  width:calc(100% - 32px);max-width:460px;max-height:92dvh;overflow-y:auto;
+  background:var(--bg-3);border:1px solid var(--line-2);border-radius:var(--radius-lg);
+  padding:30px 24px;box-shadow:var(--shadow);animation:popIn .3s var(--ease);
+  scrollbar-width:thin;scrollbar-color:var(--line-2) transparent;
+}
+.popup-card .modal-close{position:absolute}
+.popup-eyebrow{display:inline-block;font-size:.74rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--amber);margin-bottom:10px}
+.popup-card h2{font-family:'Sora',sans-serif;font-size:1.5rem;line-height:1.15;margin-bottom:8px;padding-right:20px}
+.popup-card p{color:var(--muted);margin-bottom:18px}
+.popup-card .field{margin-bottom:13px}
 
-  <!-- ===== PRICING ===== -->
-  <section class="section section-alt" id="pricing">
-    <div class="container">
-      <div class="narrow center">
-        <span class="kicker">Ways we can help</span>
-        <h2 class="section-title">Pick the level of support you need</h2>
-        <p class="lead">Packages range from <strong>A$400 to A$1,200</strong>. On the call we'll point you to the right one — or tell you that you don't need us at all.</p>
-      </div>
-      <div class="pricing-grid">
-        <article class="price-card">
-          <span class="price-level">Level 1</span>
-          <h3 class="price-name">Application Fix</h3>
-          <p class="price-from"><span>A$400</span></p>
-          <p class="price-desc">Best if you're confident in your application process and just need it done right.</p>
-          <ul class="price-feats">
-            <li>Recruiter-signal resume rebuild</li>
-            <li>Tickets &amp; clearances reframed</li>
-            <li>Optimised for the 6-second scan</li>
-          </ul>
-          <button class="btn btn-ghost btn-block" data-open-form data-plan="Level 1 — Application Fix (A$400)">Apply for this</button>
-        </article>
-        <article class="price-card price-card--featured">
-          <span class="badge">★ Most popular</span>
-          <span class="price-level">Level 2</span>
-          <h3 class="price-name">Full Coaching Program</h3>
-          <p class="price-from"><span>A$800</span></p>
-          <p class="price-desc">Best if you want a complete strategy — the full system, end to end.</p>
-          <ul class="price-feats">
-            <li>Everything in Application Fix</li>
-            <li>The complete FIFO application system</li>
-            <li>1:1 coaching &amp; feedback as you apply</li>
-            <li>Recruiter-call training to land the role</li>
-          </ul>
-          <button class="btn btn-apply btn-block" data-open-form data-plan="Level 2 — Full Coaching Program (A$800)">Apply for this</button>
-        </article>
-        <article class="price-card">
-          <span class="price-level">Level 3</span>
-          <h3 class="price-name">Done-For-You</h3>
-          <p class="price-from"><span>A$1,200</span></p>
-          <p class="price-desc">Best if you want us to handle the heavy lifting for you. <em>Limited capacity.</em></p>
-          <ul class="price-feats">
-            <li>Everything in Full Coaching</li>
-            <li>We run your applications for you</li>
-            <li>Priority, hands-on support</li>
-          </ul>
-          <button class="btn btn-ghost btn-block" data-open-form data-plan="Level 3 — Done-For-You (A$1,200)">Apply for this</button>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== THE CALL ===== -->
-  <section class="section" id="call">
-    <div class="container narrow">
-      <span class="kicker">Total transparency</span>
-      <h2 class="section-title">What actually happens on the call?</h2>
-      <p class="lead">It's a strategy call, not a sales call. One of three things happens:</p>
-      <div class="outcomes">
-        <div class="outcome">
-          <span class="outcome-n">1</span>
-          <div><h3>We point you in the right direction — free</h3><p>If you just need a nudge, we'll tell you exactly what to fix. No charge.</p></div>
-        </div>
-        <div class="outcome">
-          <span class="outcome-n">2</span>
-          <div><h3>We explain how we can help</h3><p>If a package is the right fit, we'll walk you through it. Your call, no pressure.</p></div>
-        </div>
-        <div class="outcome">
-          <span class="outcome-n">3</span>
-          <div><h3>We send you elsewhere</h3><p>If we're not the right fit, we'll point you to someone who is.</p></div>
-        </div>
-      </div>
-      <p class="reassure">No pitch. No pressure. No follow-up calls if you say no. We wish you the best either way. 🤝</p>
-    </div>
-  </section>
-
-  <!-- ===== FINAL CTA ===== -->
-  <section class="final-cta">
-    <div class="container narrow center">
-      <h2 class="section-title">Lock in your fastest path to FIFO 👇</h2>
-      <p class="lead">Spend 60 seconds telling us about you. We'll review it and book your strategy call.</p>
-      <button class="btn btn-apply btn-lg" data-open-form>Apply now</button>
-    </div>
-  </section>
-
-</main>
-
-<!-- ===== FOOTER ===== -->
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <a href="#top" class="brand">
-      <span class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24" width="18" height="18" fill="none"><path d="M3 14l4-7 5 4 4-6 5 9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-      <span class="brand-name">FIFO<span class="brand-accent">FINDER</span></span>
-    </a>
-    <p class="footer-tag">Helping good people get onto site, faster.</p>
-    <p class="footer-fine">© <span id="year">2026</span> FIFOFINDER. All rights reserved.</p>
-  </div>
-</footer>
-
-<!-- ===== MOBILE STICKY CTA ===== -->
-<div class="mobile-cta">
-  <button class="btn btn-apply btn-block" data-open-form>Apply now — 60 seconds</button>
-</div>
-
-<!-- ===== APPLY FORM MODAL ===== -->
-<div class="modal" id="applyModal" aria-hidden="true">
-  <div class="modal-backdrop" data-close-form></div>
-  <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-    <button class="modal-close" data-close-form aria-label="Close form">
-      <svg viewBox="0 0 24 24" width="22" height="22" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
-    </button>
-
-    <div class="modal-body" id="modalBody">
-      <div class="modal-head">
-        <span class="pill pill-light"><span class="dot"></span> Step <span id="stepNow">1</span> of 3</span>
-        <h2 id="modalTitle">Apply for your FIFO strategy call</h2>
-        <p class="modal-sub">60 seconds. No payment now — this just gets you reviewed.</p>
-        <div class="progress"><div class="progress-bar" id="progressBar"></div></div>
-      </div>
-
-      <form id="applyForm" novalidate>
-        <!-- STEP 1: About you -->
-        <fieldset class="step is-active" data-step="1">
-          <div class="field">
-            <label for="f-name">Full name <span class="req">*</span></label>
-            <input type="text" id="f-name" name="name" autocomplete="name" placeholder="Jane Smith" required />
-            <small class="err" data-err></small>
-          </div>
-          <div class="field">
-            <label for="f-email">Email <span class="req">*</span></label>
-            <input type="email" id="f-email" name="email" autocomplete="email" placeholder="you@email.com" required />
-            <small class="err" data-err></small>
-          </div>
-          <div class="field">
-            <label for="f-phone">Mobile <span class="req">*</span></label>
-            <input type="tel" id="f-phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="04xx xxx xxx" required />
-            <small class="err" data-err></small>
-          </div>
-          <div class="field">
-            <label for="f-state">Which state are you in?</label>
-            <select id="f-state" name="state">
-              <option value="">Select…</option>
-              <option>WA</option><option>QLD</option><option>NSW</option><option>SA</option>
-              <option>VIC</option><option>NT</option><option>TAS</option><option>ACT</option>
-              <option>Overseas</option>
-            </select>
-          </div>
-        </fieldset>
-
-        <!-- STEP 2: Your situation -->
-        <fieldset class="step" data-step="2">
-          <div class="field">
-            <label>Have you worked FIFO / on a mine site before? <span class="req">*</span></label>
-            <div class="choice-row">
-              <label class="choice"><input type="radio" name="experience" value="No experience" required /><span>No experience yet</span></label>
-              <label class="choice"><input type="radio" name="experience" value="Some / related" /><span>Some / related</span></label>
-              <label class="choice"><input type="radio" name="experience" value="Experienced" /><span>Experienced FIFO</span></label>
-            </div>
-            <small class="err" data-err></small>
-          </div>
-          <div class="field">
-            <label>Which tickets / clearances do you hold?</label>
-            <div class="chips">
-              <label class="chip"><input type="checkbox" name="tickets" value="White Card" /><span>White Card</span></label>
-              <label class="chip"><input type="checkbox" name="tickets" value="Standard 11" /><span>Standard 11</span></label>
-              <label class="chip"><input type="checkbox" name="tickets" value="HR Licence" /><span>HR Licence</span></label>
-              <label class="chip"><input type="checkbox" name="tickets" value="Working at Heights" /><span>Working at Heights</span></label>
-              <label class="chip"><input type="checkbox" name="tickets" value="Confined Space" /><span>Confined Space</span></label>
-              <label class="chip"><input type="checkbox" name="tickets" value="None yet" /><span>None yet</span></label>
-            </div>
-          </div>
-          <div class="field">
-            <label for="f-role">What role are you aiming for?</label>
-            <input type="text" id="f-role" name="role" placeholder="e.g. Minesite Cleaning, Utility, HD Operator" />
-          </div>
-        </fieldset>
-
-        <!-- STEP 3: How we help -->
-        <fieldset class="step" data-step="3">
-          <div class="field">
-            <label for="f-plan">What are you most interested in? <span class="req">*</span></label>
-            <select id="f-plan" name="plan" required>
-              <option value="">Select…</option>
-              <option>Level 1 — Application Fix (A$400)</option>
-              <option>Level 2 — Full Coaching Program (A$800)</option>
-              <option>Level 3 — Done-For-You (A$1,200)</option>
-              <option>Not sure yet — help me decide</option>
-            </select>
-            <small class="err" data-err></small>
-          </div>
-          <div class="field">
-            <label for="f-when">Best time for a call?</label>
-            <select id="f-when" name="callTime">
-              <option value="">Select…</option>
-              <option>Weekday mornings</option>
-              <option>Weekday afternoons</option>
-              <option>Weekday evenings</option>
-              <option>Weekends</option>
-            </select>
-          </div>
-          <div class="field">
-            <label for="f-notes">Anything else we should know?</label>
-            <textarea id="f-notes" name="notes" rows="3" placeholder="Tell us what's been holding you back…"></textarea>
-          </div>
-          <label class="consent">
-            <input type="checkbox" name="consent" required />
-            <span>I'd like FIFOFINDER to review my details and contact me about my strategy call. <span class="req">*</span></span>
-          </label>
-          <small class="err" data-err data-err-consent></small>
-        </fieldset>
-
-        <div class="modal-actions">
-          <button type="button" class="btn btn-ghost" id="prevBtn" hidden>Back</button>
-          <button type="button" class="btn btn-apply" id="nextBtn">Continue</button>
-          <button type="submit" class="btn btn-apply" id="submitBtn" hidden>Submit application</button>
-        </div>
-      </form>
-    </div>
-
-    <!-- SUCCESS STATE -->
-    <div class="modal-success" id="modalSuccess" hidden>
-      <div class="success-tick" aria-hidden="true">
-        <svg viewBox="0 0 52 52" width="64" height="64"><circle cx="26" cy="26" r="24" fill="none" stroke="currentColor" stroke-width="3"/><path d="M16 27l7 7 14-15" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </div>
-      <h2>You're in. 🎉</h2>
-      <p>Thanks, <span id="successName">mate</span>. We've got your details and we'll review them shortly, then reach out to lock in your FIFO strategy call.</p>
-      <p class="success-fine">No pitch. No pressure. Keep an eye on your inbox.</p>
-      <button class="btn btn-ghost" data-close-form>Done</button>
-    </div>
-  </div>
-</div>
-
-<!-- ===== LIGHTBOX (proof expand) ===== -->
-<div class="lightbox" id="lightbox" aria-hidden="true">
-  <div class="lightbox-backdrop" data-close-lightbox></div>
-  <button class="lightbox-close" data-close-lightbox aria-label="Close image">
-    <svg viewBox="0 0 24 24" width="26" height="26" fill="none"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
-  </button>
-  <button class="lightbox-nav lightbox-prev" data-lb-prev aria-label="Previous image">
-    <svg viewBox="0 0 24 24" width="28" height="28" fill="none"><path d="M15 6l-6 6 6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </button>
-  <button class="lightbox-nav lightbox-next" data-lb-next aria-label="Next image">
-    <svg viewBox="0 0 24 24" width="28" height="28" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-  </button>
-  <figure class="lightbox-stage" role="dialog" aria-modal="true" aria-label="Proof image">
-    <img id="lightboxImg" src="" alt="" />
-    <figcaption id="lightboxCap"></figcaption>
-  </figure>
-</div>
-
-<script src="script.js"></script>
-</body>
-</html>
+/* ---------- responsive ---------- */
+@media (min-width:600px){
+  .problems-grid{grid-template-columns:1fr 1fr}
+  .res-grid{grid-template-columns:1fr 1fr}
+  .case-grid{grid-template-columns:1fr 1fr}
+  .calc-wrap{grid-template-columns:1fr 1fr;align-items:start}
+}
+@media (min-width:900px){
+  .nav{display:flex;align-items:center;gap:26px}
+  .nav-toggle{display:none}
+  .problems-grid{grid-template-columns:repeat(2,1fr)}
+  .res-grid{grid-template-columns:repeat(3,1fr)}
+}
