@@ -97,6 +97,9 @@
     };
 
     const renderGate = () => {
+      // details already on file from another form → skip the gate, show the score
+      const F = window.FIFO || {};
+      if (F.hasLead && F.hasLead()) { renderResult(F.getLead()); return; }
       setBar((QUIZ.length / (QUIZ.length + 1)) * 100);
       meta.textContent = 'Almost done — see your score';
       stage.innerHTML =
@@ -118,11 +121,13 @@
          </div>`;
       stage.querySelector('#qBack2').addEventListener('click', () => { qi = QUIZ.length - 1; renderQ(); });
       const f = stage.querySelector('#quizForm');
+      if (F.fillLead) F.fillLead(f);   // prefill anything we already know
       f.addEventListener('submit', (e) => {
         e.preventDefault();
         if (!validateSimple(f)) return;
         const lead = {};
         new FormData(f).forEach((v, k) => (lead[k] = v));
+        if (F.saveLead) F.saveLead(lead);   // remember so other forms don't re-ask
         renderResult(lead);
       });
     };
@@ -195,6 +200,13 @@
     expSel.value = 'Some experience';
 
     const fmt = (n) => '$' + Math.round(n).toLocaleString('en-AU');
+    const fmtK = (n) => {
+      const s = n < 0 ? '-' : '';
+      const a = Math.abs(n);
+      return a >= 1000
+        ? s + '$' + Math.round(a / 1000).toLocaleString('en-AU') + 'k'
+        : s + '$' + Math.round(a).toLocaleString('en-AU');
+    };
     const out = {
       head: calc.querySelector('#cl-headline'), sub: calc.querySelector('#cl-sub'),
       curBar: calc.querySelector('#cl-cur-bar'), fifoBar: calc.querySelector('#cl-fifo-bar'),
@@ -215,9 +227,9 @@
       out.sub.textContent = diff >= 0
         ? `Switching to FIFO could lift your income by about ${fmt(diff)} a year.`
         : `This role pays a bit less than your current income — let's find a better-fit role on a call.`;
-      out.d1.textContent = (diff >= 0 ? '+' : '') + fmt(diff);
-      out.d3.textContent = (diff >= 0 ? '+' : '') + fmt(diff * 3);
-      out.d5.textContent = (diff >= 0 ? '+' : '') + fmt(diff * 5);
+      out.d1.textContent = (diff >= 0 ? '+' : '') + fmtK(diff);
+      out.d3.textContent = (diff >= 0 ? '+' : '') + fmtK(diff * 3);
+      out.d5.textContent = (diff >= 0 ? '+' : '') + fmtK(diff * 5);
     };
     calc.querySelectorAll('input,select').forEach((el) => el.addEventListener('input', run));
     calc.querySelector('#cl-income').value = 70000;
@@ -243,11 +255,15 @@
       titleEl.textContent = opts.title || 'Get your free guide';
       subEl.textContent = opts.sub || 'Enter your details and we’ll send it straight to your inbox.';
       popup.dataset.asset = opts.asset || opts.title || 'resource';
-      formWrap.hidden = false; success.hidden = true;
+      const F = window.FIFO || {};
+      // details already collected once → don't ask again, just confirm it's sent
+      const known = F.hasLead && F.hasLead();
       form.reset();
+      if (F.fillLead) F.fillLead(form);
+      formWrap.hidden = known; success.hidden = !known;
       popup.classList.add('open'); popup.setAttribute('aria-hidden', 'false');
       document.body.classList.add('modal-open');
-      setTimeout(() => form.querySelector('input').focus(), 250);
+      if (!known) setTimeout(() => form.querySelector('input').focus(), 250);
     };
     const closePopup = () => {
       popup.classList.remove('open'); popup.setAttribute('aria-hidden', 'true');
@@ -276,6 +292,7 @@
       new FormData(form).forEach((v, k) => (data[k] = v));
       console.log('Resource lead:', data);
       try { localStorage.setItem('fifo_resource_lead', JSON.stringify(data)); } catch (_) {}
+      if (window.FIFO && window.FIFO.saveLead) window.FIFO.saveLead(data);   // reuse on every other form
       formWrap.hidden = true; success.hidden = false;
     });
 
@@ -315,4 +332,134 @@
     });
     return ok;
   }
+
+  /* ===========================================================
+     PLACEHOLDER BOOKING CALENDAR
+     (stand-in until the live LeadConnector widget is connected)
+     =========================================================== */
+  const CAL_MONTHS = ['January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'];
+  const CAL_DOW = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+  const CAL_SLOTS = ['9:00 AM', '10:30 AM', '12:00 PM', '1:30 PM', '3:00 PM', '4:30 PM'];
+
+  function buildFakeCal(root) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+    const minMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+    let view = new Date(minMonth);
+    let selDay = null;
+    let selSlot = null;
+    const title = root.dataset.calTitle || 'Book your call';
+    const dowIdx = (d) => (d.getDay() + 6) % 7; // Monday-based
+    const F = () => window.FIFO || {};
+    const isModal = root.classList.contains('fake-cal--modal');
+    // the in-modal calendar only appears after registering; the page calendar
+    // checks whether the qualification form has actually been completed
+    const isRegistered = () => isModal || (F().isRegistered ? F().isRegistered() : false);
+    const getBooking = () => (F().getBooking ? F().getBooking() : null);
+    const pad = (n) => (n < 10 ? '0' + n : '' + n);
+    const isoOf = (d) => `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`;
+    const labelOf = (d) => `${CAL_DOW[dowIdx(d)]}, ${d.getDate()} ${CAL_MONTHS[d.getMonth()]} ${d.getFullYear()}`;
+
+    // Already-booked view (date/time filled once — tells the user when)
+    const renderBooked = (b) => {
+      const when = F().fmtWhen ? F().fmtWhen(b.at) : '';
+      root.innerHTML = `
+        <div class="fc-done">
+          <div class="success-tick" aria-hidden="true"><svg viewBox="0 0 52 52" width="56" height="56"><circle cx="26" cy="26" r="24" fill="none" stroke="currentColor" stroke-width="3"/><path d="M16 27l7 7 14-15" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <h3>Your call is booked 🎉</h3>
+          <p>${b.label} at <strong>${b.slot}</strong> (AWST).</p>
+          <p class="fc-done-fine">Booked${when ? ' on ' + when : ''}. We've emailed your confirmation and calendar invite.</p>
+          <button type="button" class="fc-reset">Need a different time? Reschedule</button>
+        </div>`;
+    };
+
+    const render = () => {
+      const booking = getBooking();
+      if (booking) { renderBooked(booking); return; }
+
+      const y = view.getFullYear(), m = view.getMonth();
+      const startOffset = (new Date(y, m, 1).getDay() + 6) % 7;
+      const days = new Date(y, m + 1, 0).getDate();
+      const atMin = y === minMonth.getFullYear() && m === minMonth.getMonth();
+
+      let cells = '';
+      for (let i = 0; i < startOffset; i++) cells += '<span class="fc-day fc-empty"></span>';
+      for (let d = 1; d <= days; d++) {
+        const date = new Date(y, m, d);
+        const dow = date.getDay();
+        const off = date < today || dow === 0 || dow === 6;
+        const sel = selDay && selDay.getTime() === date.getTime();
+        const isToday = date.getTime() === today.getTime();
+        cells += `<button type="button" class="fc-day${sel ? ' is-sel' : ''}${isToday ? ' is-today' : ''}" data-d="${d}"${off ? ' disabled' : ''}>${d}</button>`;
+      }
+
+      const times = selDay
+        ? `<p class="fc-times-label">${CAL_DOW[dowIdx(selDay)]}, ${selDay.getDate()} ${CAL_MONTHS[selDay.getMonth()].slice(0, 3)} — pick a time <span class="fc-tz">AWST</span></p>
+           <div class="fc-slots">${CAL_SLOTS.map((s) => `<button type="button" class="fc-slot${selSlot === s ? ' is-sel' : ''}" data-s="${s}">${s}</button>`).join('')}</div>`
+        : '<p class="fc-times-hint">Select an available date to see open times.</p>';
+
+      root.innerHTML = `
+        <div class="fc-head"><h3 class="fc-title">${title}</h3><p class="fc-meta">30 min · Phone or Zoom · Free</p></div>
+        <div class="fc-body">
+          <div class="fc-cal">
+            <div class="fc-nav">
+              <button type="button" class="fc-arrow" data-nav="-1" aria-label="Previous month"${atMin ? ' disabled' : ''}>&lsaquo;</button>
+              <span class="fc-month">${CAL_MONTHS[m]} ${y}</span>
+              <button type="button" class="fc-arrow" data-nav="1" aria-label="Next month">&rsaquo;</button>
+            </div>
+            <div class="fc-dows">${CAL_DOW.map((d) => `<span>${d}</span>`).join('')}</div>
+            <div class="fc-grid">${cells}</div>
+          </div>
+          <div class="fc-times">${times}
+            <button type="button" class="fc-confirm btn btn-apply btn-block"${selSlot ? '' : ' disabled'}>${selSlot ? (isRegistered() ? 'Confirm ' + selSlot : 'Register to lock in ' + selSlot) : 'Select a date & time'}</button>
+          </div>
+        </div>`;
+    };
+
+    // let other calendars / the form re-sync this one when state changes
+    root.__refresh = render;
+
+    root.addEventListener('click', (e) => {
+      const nav = e.target.closest('[data-nav]');
+      if (nav && !nav.disabled) {
+        view = new Date(view.getFullYear(), view.getMonth() + Number(nav.dataset.nav), 1);
+        if (view < minMonth) view = new Date(minMonth);
+        render(); return;
+      }
+      const day = e.target.closest('.fc-day:not(.fc-empty)');
+      if (day && !day.disabled) {
+        selDay = new Date(view.getFullYear(), view.getMonth(), Number(day.dataset.d));
+        selSlot = null; render(); return;
+      }
+      const slot = e.target.closest('.fc-slot');
+      if (slot) { selSlot = slot.dataset.s; render(); return; }
+
+      if (e.target.closest('.fc-confirm') && selSlot) {
+        if (getBooking()) { render(); return; }            // already booked — just show it
+        const sel = { date: isoOf(selDay), label: labelOf(selDay), slot: selSlot };
+        if (isRegistered()) {
+          if (F().setBooking) F().setBooking(sel);          // date/time filled once
+          (F().refreshCals || render)();
+        } else {
+          F().pendingSlot = sel;                            // remember the choice…
+          if (F().openForm) F().openForm();                 // …collect details once, then auto-book
+        }
+        return;
+      }
+
+      if (e.target.closest('.fc-reset')) {                  // reschedule
+        if (F().clearBooking) F().clearBooking();
+        selDay = null; selSlot = null;
+        (F().refreshCals || render)();
+      }
+    });
+
+    render();
+  }
+
+  document.querySelectorAll('[data-fake-cal]').forEach(buildFakeCal);
+  // allow the form / any calendar to re-render every calendar after a state change
+  window.FIFO = window.FIFO || {};
+  window.FIFO.refreshCals = () => document.querySelectorAll('[data-fake-cal]').forEach((c) => c.__refresh && c.__refresh());
 })();

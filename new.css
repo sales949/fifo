@@ -8,7 +8,7 @@
 
 /* ---------- primary nav ---------- */
 .nav{display:none}
-.nav a{font-size:.95rem;font-weight:600;color:var(--muted);transition:color .2s;white-space:nowrap}
+.nav a{font-size:.9rem;font-weight:600;color:var(--muted);transition:color .2s;white-space:nowrap}
 .nav a:hover{color:var(--text)}
 .nav-toggle{
   display:grid;place-items:center;width:42px;height:42px;border-radius:11px;
@@ -103,7 +103,7 @@
 /* ===========================================================
    SALARY CALCULATOR
    =========================================================== */
-.calc-wrap{display:grid;grid-template-columns:1fr;gap:22px;margin-top:38px}
+.calc-wrap{display:grid;grid-template-columns:minmax(0,1fr);gap:22px;margin-top:38px}
 .calc-card{background:var(--card);border:1px solid var(--line-2);border-radius:var(--radius-lg);padding:26px 22px;box-shadow:var(--shadow)}
 .calc-card h3{font-family:'Sora',sans-serif;font-size:1.15rem;margin-bottom:18px}
 .calc-out h3{margin-bottom:6px}
@@ -118,9 +118,9 @@
 .bar i{display:block;height:100%;border-radius:999px;width:0;transition:width .8s var(--ease)}
 .bar.cur i{background:var(--muted-2)}
 .bar.fifo i{background:linear-gradient(90deg,var(--amber),var(--amber-2))}
-.diffs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:22px}
-.diff{background:var(--field);border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px 10px;text-align:center}
-.diff .dv{font-family:'Sora',sans-serif;font-weight:800;font-size:1.2rem;color:var(--green)}
+.diffs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin-bottom:22px}
+.diff{background:var(--field);border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px 8px;text-align:center;min-width:0}
+.diff .dv{font-family:'Sora',sans-serif;font-weight:800;font-size:clamp(1rem,4.4vw,1.2rem);color:var(--green)}
 .diff .dl{font-size:.74rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-top:3px}
 .calc-note{font-size:.8rem;color:var(--muted-2);margin-top:8px}
 
@@ -148,7 +148,7 @@
 /* ===========================================================
    FREE RESOURCES
    =========================================================== */
-.res-grid{display:grid;grid-template-columns:1fr;gap:16px;margin-top:38px}
+.res-grid{display:grid;grid-template-columns:min(100%,420px);justify-content:center;gap:16px;margin-top:38px}
 .res-card{
   background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px 22px;
   display:flex;flex-direction:column;transition:transform .2s var(--ease),border-color .2s;
@@ -178,9 +178,64 @@
    =========================================================== */
 .booking-embed{
   margin-top:30px;background:var(--card);border:1px solid var(--line-2);border-radius:var(--radius-lg);
-  overflow:hidden;box-shadow:var(--shadow);min-height:680px;
+  overflow:hidden;box-shadow:var(--shadow);min-height:300px;
 }
-.booking-embed iframe{width:100%;min-height:680px;border:none;display:block;background:#fff}
+/* min-height is only a pre-load placeholder — form_embed.js sets the real height,
+   so the box matches the calendar exactly (no blank space below it on mobile). */
+.booking-embed iframe{width:100%;min-height:300px;border:none;display:block;background:#fff}
+
+/* ---------- placeholder booking calendar ---------- */
+.fake-cal{
+  margin-top:30px;background:var(--card);border:1px solid var(--line-2);border-radius:var(--radius-lg);
+  overflow:hidden;box-shadow:var(--shadow);
+}
+.fake-cal--modal{margin:18px 0 6px}
+.fc-head{padding:18px 22px;border-bottom:1px solid var(--line)}
+.fc-title{font-family:'Sora',sans-serif;font-size:1.12rem;margin-bottom:3px}
+.fc-meta{color:var(--muted);font-size:.88rem}
+.fc-body{display:grid;grid-template-columns:minmax(0,1fr)}
+.fc-cal{padding:18px 22px}
+.fc-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+.fc-month{font-family:'Sora',sans-serif;font-weight:700;font-size:1rem}
+.fc-arrow{width:36px;height:36px;border-radius:10px;background:var(--field);border:1px solid var(--line);
+  color:var(--text);font-size:1.3rem;line-height:1;display:grid;place-items:center;transition:.15s}
+.fc-arrow:hover:not([disabled]){border-color:var(--amber);color:var(--amber)}
+.fc-arrow[disabled]{opacity:.35;cursor:not-allowed}
+.fc-dows{display:grid;grid-template-columns:repeat(7,1fr);gap:4px;margin-bottom:6px}
+.fc-dows span{text-align:center;font-size:.7rem;font-weight:700;color:var(--muted-2);text-transform:uppercase;letter-spacing:.04em}
+.fc-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:4px}
+.fc-day{aspect-ratio:1;display:grid;place-items:center;border-radius:10px;background:var(--field);
+  border:1.5px solid transparent;color:var(--text);font-size:.9rem;font-weight:600;font-family:inherit;transition:.14s}
+.fc-day:hover:not([disabled]):not(.fc-empty){border-color:var(--amber);color:var(--amber)}
+.fc-day[disabled]{background:transparent;color:var(--muted-2);opacity:.4;cursor:not-allowed}
+.fc-empty{background:transparent;border:none;pointer-events:none}
+.fc-day.is-today{box-shadow:inset 0 0 0 1.5px var(--line-2)}
+.fc-day.is-sel{background:linear-gradient(135deg,var(--amber),var(--amber-2));color:#1a1206;border-color:transparent}
+.fc-times{padding:18px 22px;border-top:1px solid var(--line)}
+.fc-times-label{font-size:.92rem;color:var(--text);font-weight:600;margin-bottom:12px}
+.fc-tz{color:var(--muted);font-weight:500}
+.fc-times-hint{color:var(--muted);font-size:.92rem;margin-bottom:14px}
+.fc-slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(94px,1fr));gap:9px;margin-bottom:16px}
+.fc-slot{padding:11px 8px;border-radius:var(--radius-sm);background:var(--field);border:1.5px solid var(--line);
+  color:var(--text);font-weight:600;font-size:.92rem;font-family:inherit;transition:.14s}
+.fc-slot:hover{border-color:var(--amber);color:var(--amber)}
+.fc-slot.is-sel{border-color:var(--amber);background:var(--amber-soft);color:var(--amber)}
+.fc-confirm[disabled]{opacity:.5;cursor:not-allowed;box-shadow:none;transform:none}
+.fc-done{padding:34px 24px;text-align:center}
+.fc-done .success-tick{color:var(--green);display:grid;place-items:center;margin-bottom:14px}
+.fc-done h3{font-family:'Sora',sans-serif;font-size:1.35rem;margin-bottom:8px}
+.fc-done p{color:var(--muted);margin-bottom:8px;max-width:42ch;margin-inline:auto}
+.fc-done strong{color:var(--text)}
+.fc-done-fine{font-size:.85rem;color:var(--muted-2)}
+.fc-reset{margin-top:12px;background:none;border:none;color:var(--amber);font-weight:700;
+  font-family:inherit;font-size:.92rem;text-decoration:underline;cursor:pointer}
+@media (min-width:560px){
+  .fake-cal .fc-body{grid-template-columns:minmax(0,1.15fr) minmax(0,1fr)}
+  .fake-cal .fc-times{border-top:none;border-left:1px solid var(--line)}
+}
+/* keep the in-modal calendar single-column (the modal card is narrow) */
+.fake-cal--modal .fc-body{grid-template-columns:minmax(0,1fr)}
+.fake-cal--modal .fc-times{border-top:1px solid var(--line);border-left:none}
 
 /* ---------- floating book button (desktop) ---------- */
 .float-book{
@@ -188,6 +243,19 @@
   box-shadow:var(--shadow-amber);
 }
 @media (min-width:600px){.float-book{display:inline-flex}}
+
+/* ---------- back-to-top button ---------- */
+.to-top{
+  position:fixed;right:20px;bottom:84px;z-index:46;
+  width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+  background:var(--card);border:1px solid var(--line-2);color:var(--text);
+  box-shadow:var(--shadow);cursor:pointer;
+  opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:opacity .25s var(--ease),transform .25s var(--ease),visibility .25s,border-color .2s,color .2s;
+}
+.to-top.show{opacity:1;visibility:visible;transform:none}
+.to-top:hover{border-color:var(--amber);color:var(--amber)}
+.to-top:active{transform:scale(.94)}
 
 /* ===========================================================
    GENERIC POPUP (resources + exit intent)
@@ -211,13 +279,22 @@
 /* ---------- responsive ---------- */
 @media (min-width:600px){
   .problems-grid{grid-template-columns:1fr 1fr}
-  .res-grid{grid-template-columns:1fr 1fr}
   .case-grid{grid-template-columns:1fr 1fr}
-  .calc-wrap{grid-template-columns:1fr 1fr;align-items:start}
+  /* equal-height calculator cards (details + opportunity match in size) */
+  .calc-wrap{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch}
+}
+@media (max-width:599px){
+  /* declutter the mobile header — the sticky bottom bar already covers booking,
+     so this restores breathing room between the brand and the theme toggle */
+  .btn-header{display:none}
 }
 @media (min-width:900px){
-  .nav{display:flex;align-items:center;gap:26px}
-  .nav-toggle{display:none}
   .problems-grid{grid-template-columns:repeat(2,1fr)}
-  .res-grid{grid-template-columns:repeat(3,1fr)}
+}
+@media (min-width:1100px){
+  /* show the full top nav only when there's room for it with space to spare */
+  .nav{display:flex;align-items:center;gap:20px}
+  .nav-toggle{display:none}
+  /* the floating "Book a Call" button covers this CTA on desktop */
+  .btn-header{display:none}
 }
